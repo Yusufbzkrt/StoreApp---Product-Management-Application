@@ -9,6 +9,7 @@ namespace Repositories.Contracts
 	public interface IRepositoryManager 
 	{
         IProductRepository Product  { get; }//sadece get olduğundan bu product repositorysine erişilebilir ancak değiştirilemez
+		ICategoryRepository Category { get; }
 		void Save();//veritabanındaki tüm değişiklikleri kaydetmek için kullanılır
     }
 }

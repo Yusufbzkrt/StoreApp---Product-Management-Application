@@ -15,14 +15,14 @@ namespace StoreApp.Controllers
 
 		public IActionResult Index()
 		{
-			var model = _manager.Product.GetAll(false);
+			var model = _manager.Product.GetAllProducts(false);
 			return View(model);
 		}
 
 		public IActionResult Get(int id)
 		{
-			//var model = _Context.Products.FirstOrDefault(p=> p.ProductId.Equals(id));
-			throw new NotImplementedException();
+			var model =_manager.Product.GetOneProduct(id,false);
+			return View(model);
 		} 
 	}
 }

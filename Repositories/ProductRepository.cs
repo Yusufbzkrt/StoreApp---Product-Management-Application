@@ -15,7 +15,10 @@ namespace Repositories
 
 		}
 
-		public IQueryable<Product> GetAll(bool trackChanges) => FindAll(trackChanges);
-		
+		public IQueryable<Product> GetAllProducts(bool trackChanges) => FindAll(trackChanges);
+		public Product? GetOneProduct(int id, bool trackChanges)
+		{
+			return FindByConditation(p=> p.ProductId.Equals(id),trackChanges);
+		}
 	}
 }

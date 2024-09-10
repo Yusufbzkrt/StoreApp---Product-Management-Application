@@ -3,6 +3,7 @@ using Repositories.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,13 @@ namespace Repositories
 				? _context.Set<T>()//veritabanından getirilen verilerin izlenmesini sağlar. Yani, yapılan değişiklikler otomatik olarak izlenir
 				: _context.Set<T>().AsNoTracking();
 		}
+
+		public T? FindByConditation(Expression<Func<T, bool>> expression, bool trackChanges)
+		{
+			return trackChanges
+				? _context.Set<T>().Where(expression).SingleOrDefault()
+				: _context.Set<T>().Where(expression).AsNoTracking().SingleOrDefault();
+		}//IrepositoryBase deki kuralı burda implemente ettik
 	}
 }
  
