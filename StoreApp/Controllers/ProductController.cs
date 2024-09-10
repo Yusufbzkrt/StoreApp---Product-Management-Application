@@ -1,29 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using StoreApp.Models;
 using Repositories;
+using Repositories.Contracts;
 
 namespace StoreApp.Controllers
 {
 	public class ProductController : Controller
 	{
-		private readonly RepositoryContext _Context;//9-15 arası anlatılmak istenilen, repositorycontext görüldüğü anda bağlantı dizesi direk oluşturulsun ve kullanabileceğim bir context ifadesi versin.
+		private readonly IRepositoryManager _manager;
 
-		public ProductController(RepositoryContext context)
+		public ProductController(IRepositoryManager manager)
 		{
-			_Context = context;
+			_manager = manager;
 		}
 
 		public IActionResult Index()
 		{
-			var model = _Context.Products.ToList();
+			var model = _manager.Product.GetAll(false);
 			return View(model);
 		}
 
 		public IActionResult Get(int id)
 		{
-			var model = _Context.Products.FirstOrDefault(p=> p.ProductId.Equals(id));
-			return View(model);
+			//var model = _Context.Products.FirstOrDefault(p=> p.ProductId.Equals(id));
+			throw new NotImplementedException();
 		} 
 	}
 }
