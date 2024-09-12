@@ -1,0 +1,24 @@
+﻿@model Product
+<h1> Create Product</h1>
+<hr />
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="mb-3">
+				<label asp-for="ProductName"></label>
+				<input asp-for="ProductName" class="form-control" />
+				<span asp-validation-for="ProductName" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Price"></label>
+				<input asp-for="Price" class="form-control" />
+				<span asp-validation-for="Price" class="text-danger"></span>
+			</div>
+			<div class="btn-group">
+			<button type="submit" class="btn btn-primary">
+				<i class="fa fa-save"></i> Save</button>
+				<a asp-action="Index" class="btn btn-outline-primary"><i class="fa fa-list"></i> Back</a>
+			</div>
+		</div>
+	</div>
+</form>

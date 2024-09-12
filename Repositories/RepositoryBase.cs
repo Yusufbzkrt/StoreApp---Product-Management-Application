@@ -19,6 +19,11 @@ namespace Repositories
 			_context = context;
 		}
 
+		public void Create(T entity)
+		{
+			_context.Set<T>().Add(entity); //Product create işlemi veritaanına kayıt için
+		}
+
 		public IQueryable<T> FindAll(bool trackChanges)//trackChanges adındaki boolean parametre değişiklik izlemeyi (tracking) kontrol eder.
 		{
 			return trackChanges//trackChanges true ise ilk kısım değilse ilk kısım döner
@@ -32,6 +37,11 @@ namespace Repositories
 				? _context.Set<T>().Where(expression).SingleOrDefault()
 				: _context.Set<T>().Where(expression).AsNoTracking().SingleOrDefault();
 		}//IrepositoryBase deki kuralı burda implemente ettik
+
+		public void Remove(T entity)
+		{
+			_context.Set<T>().Remove(entity);
+		}
 	}
 }
  

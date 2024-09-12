@@ -10,10 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
-	options.UseSqlite(builder.Configuration.GetConnectionString("sqlConnection"),b=>b.MigrationsAssembly("StoreApp"));
+	options.UseSqlite(builder.Configuration.GetConnectionString("sqlConnection"), b => b.MigrationsAssembly("StoreApp"));
 });
 //alttaki 3 ifade repo için kayýtlý
-builder.Services.AddScoped<IRepositoryManager,RepositoryManger>();
+builder.Services.AddScoped<IRepositoryManager, RepositoryManger>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
@@ -39,8 +39,19 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+	// Admin Area Routing
+	endpoints.MapAreaControllerRoute(
+		name: "Admin",
+		areaName: "Admin",
+		pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
+
+	// Default Route
+	endpoints.MapControllerRoute(
+		name: "default",
+		pattern: "{controller=Home}/{action=Index}/{id?}");
+});
+
 
 app.Run();
