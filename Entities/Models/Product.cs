@@ -6,11 +6,8 @@ public class Product
 {
 
     public int ProductId { get; set; }
-
-    [Required(ErrorMessage ="'ProductName' is required.")]
-    [MinLength(3,ErrorMessage = "'ProductName' must be longer than 3 characters")]
-    public string? ProductName { get; set; } = string.Empty;
-
-    [Required(ErrorMessage = "'Price' is required.")]
+	public string? ProductName { get; set; } = string.Empty;
     public decimal Price { get; set; }
+	public int? CategoryId { get; set; }    // Foreign Key
+    public Category? Category { get; set; } // Navigation Property
 }

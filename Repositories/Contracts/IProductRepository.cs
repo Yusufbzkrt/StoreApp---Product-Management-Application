@@ -16,7 +16,6 @@ namespace Repositories.Contracts
 											   //daha sonra ordan da services kısmına geçip Iproductservicede createnin tanımlamsını yaptık.
 
 		void DeleteOneProduct(Product product);
-
-
+		void UpdateOneProduct(Product entity);
 	}
 }

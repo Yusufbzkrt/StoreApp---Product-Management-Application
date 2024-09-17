@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model Entities.Dtos.ProductDtoForInsertion
 <h1> Create Product</h1>
 <hr />
 <form method="post" asp-action="Create" enctype="multipart/form-data">
@@ -14,9 +14,15 @@
 				<input asp-for="Price" class="form-control" />
 				<span asp-validation-for="Price" class="text-danger"></span>
 			</div>
+			<div class="mb-3">
+				<label asp-for="CategoryId"></label>
+				<select class="form-control" asp-items="@ViewBag.Categories" asp-for="CategoryId" >	
+				</select>
+			</div>
 			<div class="btn-group">
-			<button type="submit" class="btn btn-primary">
-				<i class="fa fa-save"></i> Save</button>
+				<button type="submit" class="btn btn-primary">
+					<i class="fa fa-save"></i> Save
+				</button>
 				<a asp-action="Index" class="btn btn-outline-primary"><i class="fa fa-list"></i> Back</a>
 			</div>
 		</div>

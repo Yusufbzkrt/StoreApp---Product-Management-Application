@@ -1,8 +1,13 @@
-﻿@model Product
+﻿@model Entities.Dtos.ProductDtoForUpdate
 <h1> Update Product</h1>
 <hr />
 <form method="post" asp-action="Update" enctype="multipart/form-data">
 	<input type="hidden" asp-for="ProductId" />
+	<div class="mb-3">
+		<label asp-for="CategoryId"></label>
+		<select class="form-control" asp-items="@ViewBag.Categories" asp-for="CategoryId">
+		</select>
+	</div>
 	<div class="row">
 		<div class="col-md-8">
 			<div class="mb-3">
