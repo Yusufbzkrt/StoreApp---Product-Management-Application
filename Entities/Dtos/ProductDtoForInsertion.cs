@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-	public record ProductDtoForInsertion
+	public record ProductDtoForInsertion :ProductDto
 	{
-		public string ProductName { get; set; }
-		public decimal Price { get; set; }
-		public int? CategoryId { get; set; }
+	
 	}
 }

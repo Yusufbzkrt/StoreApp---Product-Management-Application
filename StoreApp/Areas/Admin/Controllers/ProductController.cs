@@ -35,15 +35,24 @@ namespace StoreApp.Areas.Admin.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Create([FromForm] ProductDtoForInsertion productDto)
+		public async Task<IActionResult> Create([FromForm] ProductDtoForInsertion productDto, IFormFile file)
 		{
 			if (ModelState.IsValid)
 			{
+				//file operation 
+				string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img",file.FileName);
+				
+				using (var stream = new FileStream(path, FileMode.Create))
+				{
+					await file.CopyToAsync(stream);
+				}
+				productDto.ImageUrl = String.Concat("/img/",file.FileName);
+				
 				_manager.ProductService.CreateProduct(productDto);
 				return RedirectToAction("Index");
 			}
 			return View();
-		}
+		}// resim yüklemek için  IFormFile file eklendi 42-49 arası resim dosyasını kaydetmek için
 		public ActionResult Update([FromRoute(Name = "id")] int id)//route den gelen id yi al
 		{
 			ViewBag.Categories = GetCategoriesSelectList();
@@ -52,11 +61,20 @@ namespace StoreApp.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Update([FromForm] ProductDtoForUpdate product)
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Update([FromForm] ProductDtoForUpdate productDto, IFormFile file)
 		{
 			if (ModelState.IsValid)
 			{
-				_manager.ProductService.UpdateOneProduct(product);
+				//file operation 
+				string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", file.FileName);
+
+				using (var stream = new FileStream(path, FileMode.Create))
+				{
+					await file.CopyToAsync(stream);
+				}
+				productDto.ImageUrl = String.Concat("/img/", file.FileName);
+				_manager.ProductService.UpdateOneProduct(productDto);
 				return RedirectToAction("Index");
 			}
 			return View();

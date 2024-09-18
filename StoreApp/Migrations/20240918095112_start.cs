@@ -7,7 +7,7 @@
 namespace StoreApp.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class start : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,8 +31,10 @@ namespace StoreApp.Migrations
                 {
                     ProductId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ProductName = table.Column<string>(type: "TEXT", nullable: false),
+                    ProductName = table.Column<string>(type: "TEXT", nullable: true),
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Summary = table.Column<string>(type: "TEXT", nullable: true),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
@@ -56,16 +58,16 @@ namespace StoreApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ProductId", "CategoryId", "Price", "ProductName" },
+                columns: new[] { "ProductId", "CategoryId", "ImageUrl", "Price", "ProductName", "Summary" },
                 values: new object[,]
                 {
-                    { 1, 2, 17000m, "Bilgisayar" },
-                    { 2, 2, 1000m, "Klavye" },
-                    { 3, 2, 500m, "Mouse" },
-                    { 4, 2, 4000m, "Monitor" },
-                    { 5, 2, 15000m, "Kasa" },
-                    { 6, 1, 2000m, "Piraye" },
-                    { 7, 1, 2000m, "Hamlet" }
+                    { 1, 2, "/img/1.jpg", 17000m, "Bilgisayar", "" },
+                    { 2, 2, "/img/2.jpg", 1000m, "Klavye", "" },
+                    { 3, 2, "/img/3.jpg", 500m, "Mouse", "" },
+                    { 4, 2, "/img/4.jpg", 4000m, "Monitor", "" },
+                    { 5, 2, "/img/5.jpg", 15000m, "Kasa", "" },
+                    { 6, 1, "/img/6.jpg", 2000m, "Piraye", "" },
+                    { 7, 1, "/img/7.jpg", 2000m, "Hamlet", "" }
                 });
 
             migrationBuilder.CreateIndex(

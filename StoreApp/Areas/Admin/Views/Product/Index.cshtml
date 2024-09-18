@@ -12,6 +12,7 @@
 			<tr>
 				<th>Id</th>
 				<th>Product Name</th>
+				<th>Images</th>
 				<th>Price</th>
 				<th>Operations</th>
 			</tr>
@@ -22,6 +23,7 @@
 				<tr>
 					<th>@prd.ProductId</th>
 					<th>@prd.ProductName</th>
+					<th><img class="border border-ligth rounded shadow" src="@prd?.ImageUrl" alt="@prd?.ProductName" width="50" /></th>
 					<th>@prd.Price.ToString("c")</th>
 					<th>
 						<div class="btn-group">
