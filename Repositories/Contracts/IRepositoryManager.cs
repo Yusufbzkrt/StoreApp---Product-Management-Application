@@ -10,6 +10,7 @@ namespace Repositories.Contracts
 	{
         IProductRepository Product  { get; }//sadece get olduğundan bu product repositorysine erişilebilir ancak değiştirilemez
 		ICategoryRepository Category { get; }
+		IOrderRepository Order { get; }
 		void Save();//veritabanındaki tüm değişiklikleri kaydetmek için kullanılır
     }
 }
