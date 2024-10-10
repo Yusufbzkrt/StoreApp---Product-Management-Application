@@ -11,7 +11,7 @@ using Repositories;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20241009192602_start")]
+    [Migration("20241010210943_start")]
     partial class start
     {
         /// <inheritdoc />
@@ -119,6 +119,9 @@ namespace StoreApp.Migrations
                     b.Property<string>("ProductName")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("ShowCase")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Summary")
                         .HasColumnType("TEXT");
 
@@ -136,6 +139,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/2.jpg",
                             Price = 17000m,
                             ProductName = "Bilgisayar",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -145,6 +149,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/5.jpg",
                             Price = 1000m,
                             ProductName = "Klavye",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -154,6 +159,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/1.jpg",
                             Price = 500m,
                             ProductName = "Mouse",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -163,6 +169,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/3.jpg",
                             Price = 4000m,
                             ProductName = "Kamera",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -172,6 +179,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/6.jpg",
                             Price = 15000m,
                             ProductName = "Kasa",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -181,6 +189,7 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/4.jpg",
                             Price = 2000m,
                             ProductName = "Piraye",
+                            ShowCase = false,
                             Summary = ""
                         },
                         new
@@ -190,6 +199,37 @@ namespace StoreApp.Migrations
                             ImageUrl = "/img/7.jpg",
                             Price = 2000m,
                             ProductName = "Hamlet",
+                            ShowCase = false,
+                            Summary = ""
+                        },
+                        new
+                        {
+                            ProductId = 8,
+                            CategoryId = 2,
+                            ImageUrl = "/img/8.jpg",
+                            Price = 4000m,
+                            ProductName = "Xp-Pen",
+                            ShowCase = true,
+                            Summary = ""
+                        },
+                        new
+                        {
+                            ProductId = 9,
+                            CategoryId = 2,
+                            ImageUrl = "/img/9.jpg",
+                            Price = 8000m,
+                            ProductName = "Samsung Galaxy FE",
+                            ShowCase = true,
+                            Summary = ""
+                        },
+                        new
+                        {
+                            ProductId = 10,
+                            CategoryId = 2,
+                            ImageUrl = "/img/10.jpg",
+                            Price = 5000m,
+                            ProductName = "Hp Mouse",
+                            ShowCase = true,
                             Summary = ""
                         });
                 });

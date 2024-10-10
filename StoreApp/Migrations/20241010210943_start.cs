@@ -54,7 +54,8 @@ namespace StoreApp.Migrations
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
                     Summary = table.Column<string>(type: "TEXT", nullable: true),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true)
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true),
+                    ShowCase = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,16 +104,19 @@ namespace StoreApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ProductId", "CategoryId", "ImageUrl", "Price", "ProductName", "Summary" },
+                columns: new[] { "ProductId", "CategoryId", "ImageUrl", "Price", "ProductName", "ShowCase", "Summary" },
                 values: new object[,]
                 {
-                    { 1, 2, "/img/2.jpg", 17000m, "Bilgisayar", "" },
-                    { 2, 2, "/img/5.jpg", 1000m, "Klavye", "" },
-                    { 3, 2, "/img/1.jpg", 500m, "Mouse", "" },
-                    { 4, 2, "/img/3.jpg", 4000m, "Kamera", "" },
-                    { 5, 2, "/img/6.jpg", 15000m, "Kasa", "" },
-                    { 6, 1, "/img/4.jpg", 2000m, "Piraye", "" },
-                    { 7, 1, "/img/7.jpg", 2000m, "Hamlet", "" }
+                    { 1, 2, "/img/2.jpg", 17000m, "Bilgisayar", false, "" },
+                    { 2, 2, "/img/5.jpg", 1000m, "Klavye", false, "" },
+                    { 3, 2, "/img/1.jpg", 500m, "Mouse", false, "" },
+                    { 4, 2, "/img/3.jpg", 4000m, "Kamera", false, "" },
+                    { 5, 2, "/img/6.jpg", 15000m, "Kasa", false, "" },
+                    { 6, 1, "/img/4.jpg", 2000m, "Piraye", false, "" },
+                    { 7, 1, "/img/7.jpg", 2000m, "Hamlet", false, "" },
+                    { 8, 2, "/img/8.jpg", 4000m, "Xp-Pen", true, "" },
+                    { 9, 2, "/img/9.jpg", 8000m, "Samsung Galaxy FE", true, "" },
+                    { 10, 2, "/img/10.jpg", 5000m, "Hp Mouse", true, "" }
                 });
 
             migrationBuilder.CreateIndex(

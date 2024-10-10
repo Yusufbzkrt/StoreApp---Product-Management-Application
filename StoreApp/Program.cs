@@ -1,11 +1,5 @@
-using Entities.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Repositories;
-using Repositories.Contracts;
-using Services;
-using Services.Contracts;
-using StoreApp.Models;
+using StoreApp.Infrastructe.Extensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,35 +7,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();//controller olmadanda razor page leri kullanabilmemizi saðlayan servis. kullanmak için en aþaðý enpointte eklemeliyiz.
 
-builder.Services.AddDbContext<RepositoryContext>(options =>
-{
-	options.UseSqlite(builder.Configuration.GetConnectionString("sqlConnection"), b => b.MigrationsAssembly("StoreApp"));
-});
+builder.Services.ConfigureDbContext(builder.Configuration);//ServiceExtensiondaki metoda baðlandý
 
 //oturum yönetimi ve önbellekleme iþlemleri için gerekli yapýlandýrmalar
-builder.Services.AddDistributedMemoryCache();//sýkça eriþilen verilerin bellekte tutulmasýna olanak tanýr
-builder.Services.AddSession(Options =>
-{
-	Options.Cookie.Name = "StoreApp.Session";//oturum bilgilerini saklamak için kullanýlan çerezin adýný belirler.
-	Options.IdleTimeout = TimeSpan.FromMinutes(10);//oturumu 10 dk açýk tut
-}); //Bu sayede, kullanýcý sayfalar arasýnda geçiþ yapsa bile bu bilgiler korunur. 
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.ConfigureSession();
 
-//alttaki 3 ifade repo için kayýtlý
-builder.Services.AddScoped<IRepositoryManager, RepositoryManger>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+//alttaki ifade repo için kayýtlý
+builder.Services.ConfigureRepositoryRegistration();
 
-//alttaki 3 ifade Service için kayýtlý
-builder.Services.AddScoped<IServiceManager, ServiceManager>();
-builder.Services.AddScoped<IProductService, ProductManager>();
-builder.Services.AddScoped<ICategoryService, CategoryManager>();
-builder.Services.AddScoped<IOrderService, OrderManager>();
-
-
-//AddScoped her kullanýcýya özel sepet oluþturmaya yarýyor.
-builder.Services.AddScoped<Cart>(c => SessionCart.GetCart(c));
+//alttaki ifade Service için kayýtlý
+builder.Services.ConfigureServiceRegistration();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -65,19 +40,8 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-	// Admin Area Routing
-	endpoints.MapAreaControllerRoute(
-		name: "Admin",
-		areaName: "Admin",
-		pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
-
-	// Default Route
-	endpoints.MapControllerRoute(
-		name: "default",
-		pattern: "{controller=Home}/{action=Index}/{id?}");
-
-	endpoints.MapRazorPages();
+	endpoints?.ConfigureCustomRoutes();
 });
-
+app.ConfigureAndCheckMigration();//Auto Migrate sadece update yapmayý ortadan kaldýrýr
 
 app.Run();
