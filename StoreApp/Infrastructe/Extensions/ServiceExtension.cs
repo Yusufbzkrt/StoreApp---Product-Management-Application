@@ -64,5 +64,14 @@ namespace StoreApp.Infrastructe.Extensions
 
 			endpoints.MapRazorPages();
 		}
+		public static void ConfigureRouting(this IServiceCollection services)
+		{
+			services.AddRouting(options =>
+			{
+				options.LowercaseUrls = true;
+				options.AppendTrailingSlash = false;//sona slash ifadesi eklensin mi?
+			});
+		}
+
 	}
 }

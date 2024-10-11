@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<Category>
 
-	<div class="my-4">
-		<ul class="list-group">
-		@foreach(var cat in Model)
+<div class="my-4">
+	<ul class="list-group">
+		@foreach (var cat in Model)
 		{
-			<li class="list-group-item">
-				@cat.CategoryName
-			</li>
+			
+				<a asp-action="Index" asp-route-categoryId="@cat.CategoryId"  class="btn btn-primary mx-2 my-2">
+					@cat.CategoryName
+				</a>
+			
 		}
-		</ul>
-	</div>
+	</ul>
+</div>

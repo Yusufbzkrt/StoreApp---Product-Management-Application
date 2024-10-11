@@ -20,6 +20,9 @@ builder.Services.ConfigureServiceRegistration();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
+//routelarýn küçük harfle baþlamasý
+builder.Services.ConfigureRouting();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,5 +46,5 @@ app.UseEndpoints(endpoints =>
 	endpoints?.ConfigureCustomRoutes();
 });
 app.ConfigureAndCheckMigration();//Auto Migrate sadece update yapmayý ortadan kaldýrýr
-
+app.ConfigureLocalization();//türk lirasý uygulama - yerelleþtirme
 app.Run();
