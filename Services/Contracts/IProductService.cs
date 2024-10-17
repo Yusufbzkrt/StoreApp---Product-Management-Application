@@ -12,6 +12,7 @@ namespace Repositories.Contracts
 	public interface IProductService
 	{
 		IEnumerable<Product> GetAllProducts(bool trackChanges);
+		IEnumerable<Product> GetLastestProducts(int n, bool trackChanges);
 		IQueryable<Product> GetAllProductsWithDetails(ProductRequestParameters p);
 		IEnumerable<Product> GetShowcaseProduct(bool trackChanges);
 		Product? GetOneProduct(int id, bool trackChanges);
