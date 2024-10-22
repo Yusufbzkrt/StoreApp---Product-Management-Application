@@ -82,6 +82,8 @@ namespace StoreApp.Infrastructure.Extensions
 				pattern: "{controller=Home}/{action=Index}/{id?}");
 
 			endpoints.MapRazorPages();
+
+			endpoints.MapControllers();
 		}
 		public static void ConfigureRouting(this IServiceCollection services)
 		{

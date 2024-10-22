@@ -3,6 +3,9 @@ using StoreApp.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers()
+	.AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();//controller olmadanda razor page leri kullanabilmemizi saðlayan servis. kullanmak için en aþaðý enpointte eklemeliyiz.
