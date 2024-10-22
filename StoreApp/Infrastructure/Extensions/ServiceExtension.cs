@@ -5,8 +5,9 @@ using Services.Contracts;
 using Services;
 using Entities.Models;
 using StoreApp.Models;
+using Microsoft.AspNetCore.Identity;
 
-namespace StoreApp.Infrastructe.Extensions
+namespace StoreApp.Infrastructure.Extensions
 {
 	public static class ServiceExtension
 	{
@@ -14,8 +15,25 @@ namespace StoreApp.Infrastructe.Extensions
 		{
 			services.AddDbContext<RepositoryContext>(options =>
 			{
-				options.UseSqlite(configuration.GetConnectionString("sqlConnection"), b => b.MigrationsAssembly("StoreApp"));
+				options.UseSqlite(configuration.GetConnectionString("sqlConnection"),
+					b => b.MigrationsAssembly("StoreApp"));
+
+				options.EnableSensitiveDataLogging(true);
 			});
+		}
+
+		public static void ConfigureIdentity(this IServiceCollection services)
+		{
+			services.AddIdentity<IdentityUser, IdentityRole>(options =>
+			{
+				options.SignIn.RequireConfirmedAccount = false;
+				options.User.RequireUniqueEmail = true;
+				options.Password.RequireDigit = true;
+				options.Password.RequireLowercase = true;
+				options.Password.RequireUppercase = true;
+				options.Password.RequiredLength = 8;
+			})
+				.AddEntityFrameworkStores<RepositoryContext>();//Bu kısım, ASP.NET Core Identity verilerini (kullanıcı ve roller) Entity Framework ile RepositoryContext veritabanına kaydeder. 
 		}
 
 		public static void ConfigureSession(this IServiceCollection services)
@@ -47,6 +65,7 @@ namespace StoreApp.Infrastructe.Extensions
 			services.AddScoped<IProductService, ProductManager>();
 			services.AddScoped<ICategoryService, CategoryManager>();
 			services.AddScoped<IOrderService, OrderManager>();
+			services.AddScoped<IAuthService, AuthManager>();
 		}
 
 		public static void ConfigureCustomRoutes(this IEndpointRouteBuilder endpoints)

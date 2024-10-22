@@ -29,12 +29,9 @@
 					<a class="nav-link" aria-current="page" asp-page="/Cart">
 						<i class="fa fa-solid fa-cart-shopping"></i>
 						Cart(@await Component.InvokeAsync("CartSummary"))
-						</a>
+					</a>
 				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" aria-current="page" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin</a>
-				</li>
+				<partial name="_LoginMenu" />
 		</div>
 	</div>
 </nav>

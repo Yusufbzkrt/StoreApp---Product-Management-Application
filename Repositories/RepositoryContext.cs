@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Entities.Models;
 using Repositories.Config;
 using System.Reflection;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 namespace Repositories
 {
-	public class RepositoryContext : DbContext //veitabanı gibi işlem görür.
+	public class RepositoryContext : IdentityDbContext<IdentityUser> //veitabanı gibi işlem görür.
 	{
 		public DbSet<Product> Products { get; set; }
 		public DbSet<Category> Categories { get; set; }

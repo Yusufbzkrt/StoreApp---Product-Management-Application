@@ -1,4 +1,4 @@
-using StoreApp.Infrastructe.Extensions;
+using StoreApp.Infrastructure.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();//controller olmadanda razor page leri kullanabilmemizi saðlayan servis. kullanmak için en aþaðý enpointte eklemeliyiz.
 
 builder.Services.ConfigureDbContext(builder.Configuration);//ServiceExtensiondaki metoda baðlandý
+builder.Services.ConfigureIdentity();
 
 //oturum yönetimi ve önbellekleme iþlemleri için gerekli yapýlandýrmalar
 builder.Services.ConfigureSession();
@@ -36,15 +37,17 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseSession();//sessionlarý açýk hale getiriyoruz
-
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
 	endpoints?.ConfigureCustomRoutes();
 });
+
 app.ConfigureAndCheckMigration();//Auto Migrate sadece update yapmayý ortadan kaldýrýr
 app.ConfigureLocalization();//türk lirasý uygulama - yerelleþtirme
+app.ConfigureDefaultAdminUser();
 app.Run();

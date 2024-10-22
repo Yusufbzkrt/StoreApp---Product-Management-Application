@@ -1,4 +1,4 @@
-﻿namespace StoreApp.Infrastructe.Extensions
+﻿namespace StoreApp.Infrastructure.Extensions
 {
 
 	// Bu yöntem, bir HTTP isteği (request) aldığında, isteğin yolunu (path) ve sorgu dizesini (query string) birleştirerek döndürür.
