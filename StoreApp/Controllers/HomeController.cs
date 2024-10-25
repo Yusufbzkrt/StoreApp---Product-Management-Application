@@ -15,11 +15,7 @@ namespace StoreApp.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
-		}
-
-		public IActionResult Privacy()
-		{
+			ViewData["Title"] = "Welcome";
 			return View();
 		}
 

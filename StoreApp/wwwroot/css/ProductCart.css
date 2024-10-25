@@ -1,0 +1,19 @@
+﻿.card {
+    flex: 0 0 300px; /* Kart genişliğini ayarlayın */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Kart yüksekliğini eşitleyin */
+}
+
+.product-carousel {
+    display: flex;
+    overflow-x: auto; /* Yatay kaydırma çubuğu */
+    gap: 10px; /* Kartlar arasında boşluk */
+    padding: 10px; /* Kapsayıcı iç kenar boşluğu */
+}
+
+    .product-carousel img {
+        max-height: 200px; /* Resim yüksekliğini ayarlayın */
+        object-fit: contain; /* Resmi uygun şekilde yerleştirin */
+    }

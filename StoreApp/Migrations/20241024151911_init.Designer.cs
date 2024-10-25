@@ -11,8 +11,8 @@ using Repositories;
 namespace StoreApp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20241018142544_startIdentity")]
-    partial class startIdentity
+    [Migration("20241024151911_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -262,19 +262,19 @@ namespace StoreApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "874cc14e-e394-4742-beb5-07fd73168b0b",
+                            Id = "5f3eb7fb-a39c-491d-bf70-a1018f31a9d5",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "b40cba82-bfdb-49cb-bf88-bb812bc03437",
+                            Id = "4d051456-2956-492b-9d37-a425ff58f39a",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
-                            Id = "01cf6f4b-a730-4a81-847e-48822cf23444",
+                            Id = "d7d77f8d-275a-4d8b-bbf6-edb400e0c123",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

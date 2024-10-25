@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositorie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{EFE01793-7C8F-4E0B-9F2D-C0C43B1C87E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{FF504EDB-307A-4297-9589-9488A3EDE678}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation\Presentation.csproj", "{FF504EDB-307A-4297-9589-9488A3EDE678}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

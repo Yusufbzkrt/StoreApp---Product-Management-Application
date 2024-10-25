@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - StoreApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/StoreApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" asp-append-version="true" />
+    <title>StoreApp - @ViewData["Title"]</title>
+    <link rel="stylesheet" asp-asp-append-version="true" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" asp-asp-append-version="true" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" asp-asp-append-version="true" href="~/StoreApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" asp-asp-append-version="true" href="~/lib/font-awesome/css/all.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -24,10 +24,10 @@
         @RenderSection("Footer",false)
         <partial name="_Footer" />
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/lib/font-awesome/js/all.js/all.min.js" asp-append-version="true"></script>
+    <script asp-asp-append-version="true" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script asp-asp-append-version="true" src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script asp-asp-append-version="true" src="~/js/site.js" asp-append-version="true"></script>
+    <script asp-asp-append-version="true" src="~/lib/font-awesome/js/all.js/all.min.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

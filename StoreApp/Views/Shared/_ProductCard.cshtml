@@ -6,7 +6,7 @@
 		<div class="card-header text-center">
 			@Model.ProductName
 		</div>
-		<img src="@Model?.ImageUrl" class="card-img-top" alt="..." style="max-height: 200px; object-fit: cover;">
+		<img src="@Model?.ImageUrl" class="card-img-top" alt="..." style="max-height: 200px; object-fit: contain;">
 		<div class="card-body" style="flex-grow: 1;">
 			<div class="card-text">
 				<div class="text-danger text-center lead p-2 rounded-2">
@@ -36,3 +36,4 @@
 @section Scripts {
 	<script src="~/js/ProductCard.js"></script>
 }
+

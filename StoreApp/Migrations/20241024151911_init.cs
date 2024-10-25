@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace StoreApp.Migrations
 {
     /// <inheritdoc />
-    public partial class startIdentity : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -243,9 +243,9 @@ namespace StoreApp.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "01cf6f4b-a730-4a81-847e-48822cf23444", null, "Admin", "ADMIN" },
-                    { "874cc14e-e394-4742-beb5-07fd73168b0b", null, "User", "USER" },
-                    { "b40cba82-bfdb-49cb-bf88-bb812bc03437", null, "Editor", "EDITOR" }
+                    { "4d051456-2956-492b-9d37-a425ff58f39a", null, "Editor", "EDITOR" },
+                    { "5f3eb7fb-a39c-491d-bf70-a1018f31a9d5", null, "User", "USER" },
+                    { "d7d77f8d-275a-4d8b-bbf6-edb400e0c123", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
